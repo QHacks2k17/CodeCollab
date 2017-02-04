@@ -1,0 +1,131 @@
+<html lang="en">
+
+<head>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+    <!--
+  <script type="text/javascript" src="userlist.js"></script>
+<link type="text/css" href="userlist.css" rel="stylesheet">
+-->
+
+    <!-- CodeMirror -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.css" />
+
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/ace.js"></script>-->
+
+    <!-- Firepad -->
+    <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.css" />
+    <script src="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.min.js"></script>
+
+    <!--Bootstrap-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <link type="text/css" href="sidebar.css" rel="stylesheet">
+</head>
+
+<body onload="init()">
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                       Code Collab
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Save Collab</a>
+                </li>
+                <!--
+               <li>
+    <a href="#" id="compile">Compile</a>
+</li>
+-->
+
+                <li>
+                    <a href="#clear" id="clear" onclick="dispose();">Clear Collab</a>
+                </li>
+
+                <!--
+              <li>
+    <div id="userlist"></div>
+</li>
+-->
+            </ul>
+        </div>
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 href="#menu-toggle" id="menu-toggle">Code Collab- Bring awesomeness to life with friends!</h1>
+                        <div id="firepad"></div>
+                        <!--                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function init() {
+                // Initialize Firebase.
+                // TODO: replace with your Firebase project configuration.
+                var config = {
+                    apiKey: "AIzaSyCDiVAqsIAnM1RnffFEgbbtMSVrSvZDaPI",
+                    databaseURL: "https://codecollab-a0036.firebaseio.com"
+                };
+                firebase.initializeApp(config);
+
+                // Get Firebase Database reference.
+                var firepadRef = getExampleRef();
+
+                // Create CodeMirror (with lineWrapping on).
+                var codeMirror = CodeMirror(document.getElementById('firepad'), {
+                    lineNumbers: true,
+                    mode: 'javascript'
+
+                });
+
+                // Create Firepad (with rich text toolbar and shortcuts enabled).
+                var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
+                    richTextShortcuts: true,
+                    richTextToolbar: true,
+                    defaultText: '// JavaScript Editing with Code Collab!\nfunction go() {\n  var message = "Hello, QHacks.";\n  console.log(message);\n}'
+                });
+            }
+
+            function getExampleRef() {
+                var ref = firebase.database().ref();
+                var hash = window.location.hash.replace(/#/g, '');
+                if (hash) {
+                    ref = ref.child(hash);
+                } else {
+                    ref = ref.push(); // generate unique location.
+                    window.location = window.location + '#' + ref.key; // add it as a hash to the URL.
+                }
+                if (typeof console !== 'undefined') {
+                    console.log('Firebase data: ', ref.toString());
+                }
+                return ref;
+            }
+        </script>
+        <script>
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
+        <script>
+            function dispose() {
+                {
+                    document.getElementById('firepad').value = "";
+                }
+            }
+        </script>
+</body>
+
+</html>
