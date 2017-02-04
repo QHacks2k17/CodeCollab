@@ -16,8 +16,10 @@ firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         // User is signed in.
         $('#signup').modal('hide');
-        swal("Good job!", "You clicked the button!", "success")
-        window.location.href = "/codit.html";
+        swal("Good job!", "You logged in successfully", "success")
+        $(".confirm").click(function () {
+            window.location.href = "/codit.html";
+        });
         console.log('SIGNED IN')
     } else {
         //window.location.href = "/index.html";
