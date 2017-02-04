@@ -28,7 +28,7 @@
     <link type="text/css" href="sidebar.css" rel="stylesheet">
 </head>
 
-<body onload="init()">
+<body>
     <div id="wrapper">
 
         <!-- Sidebar -->
@@ -54,7 +54,11 @@
 -->
 
                 <li>
-                    <a href="#clear" id="clear" onclick="dispose();">Clear Collab</a>
+                    <a href="#clear" id="clear">Clear Collab</a>
+                </li>
+
+                <li>
+                    <a href="#addMember" id="addMember" data-toggle="modal" data-target="#emailModal">Add Member</a>
                 </li>
 
                 <!--
@@ -75,82 +79,37 @@
                 </div>
             </div>
         </div>
-        <script>
-            function init() {
-                // Initialize Firebase.
-                // TODO: replace with your Firebase project configuration.
-                var config = {
-                    apiKey: "AIzaSyCDiVAqsIAnM1RnffFEgbbtMSVrSvZDaPI",
-                    databaseURL: "https://codecollab-a0036.firebaseio.com"
-                };
-                firebase.initializeApp(config);
 
-                // Get Firebase Database reference.
-                var firepadRef = getExampleRef();
+        <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel1">Join Code Collab</h4>
+                    </div>
+                    <div class="modal-body">
 
-                // Create CodeMirror (with lineWrapping on).
-                var codeMirror = CodeMirror(document.getElementById('firepad'), {
-                    lineNumbers: true,
-                    mode: 'javascript'
+                        <div class="row">
+                            <h3 class="text-center">Add Member</h3></div>
+                        <div class="row">
+                            <hr>
+                        </div>
 
-                });
-
-                // Create Firepad (with rich text toolbar and shortcuts enabled).
-                var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
-                    richTextShortcuts: true,
-                    richTextToolbar: true,
-                    defaultText: '// JavaScript Editing with Code Collab!\nfunction go() {\n  var message = "Hello, QHacks.";\n  console.log(message);\n}'
-                });
-            }
-
-            function getExampleRef() {
-                var ref = firebase.database().ref();
-                var hash = window.location.hash.replace(/#/g, '');
-                if (hash) {
-                    ref = ref.child(hash);
-                } else {
-                    ref = ref.push(); // generate unique location.
-                    window.location = window.location + '#' + ref.key; // add it as a hash to the URL.
-                }
-                if (typeof console !== 'undefined') {
-                    console.log('Firebase data: ', ref.toString());
-                }
-                return ref;
-            }
-        </script>
-        <script>
-            $("#menu-toggle").click(function (e) {
-                e.preventDefault();
-                $("#wrapper").toggleClass("toggled");
-            });
-        </script>
-        <script>
-            function dispose() {
-                {
-                    document.getElementById('firepad').value = "";
-                }
-            }
-        </script>
-        <script>
-            //            var config = {
-            //                apiKey: "AIzaSyCDiVAqsIAnM1RnffFEgbbtMSVrSvZDaPI",
-            //                authDomain: "codecollab-a0036.firebaseapp.com",
-            //                databaseURL: "https://codecollab-a0036.firebaseio.com",
-            //                storageBucket: "codecollab-a0036.appspot.com",
-            //                messagingSenderId: "959804611798"
-            //            };
-            //            firebase.initializeApp(config);
-
-            firebase.auth().onAuthStateChanged(function (user) {
-                if (user) {
-                    // User is signed in.
-                    console.log('SIGNED IN')
-                } else {
-                    window.location.href = "/index.html";
-                    console.log('SIGNED OUT')
-                }
-            });
-        </script>
+                        <form>
+                            <div class="form-group">
+                                <label for="email">Enter email</label>
+                                <input class="text-center form-control" id="email" type="email" placeholder="Email">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="addModalButton">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="codit.js"></script>
 </body>
 
 </html>

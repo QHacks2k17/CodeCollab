@@ -17,7 +17,8 @@ firebase.auth().onAuthStateChanged(function (user) {
         // User is signed in.
         $('#signup').modal('hide');
         swal("Good job!", "You clicked the button!", "success")
-        window.location.href = "/codit.html";
+        //window.location.href = "/codit.html";
+        window.open('codit.html', '_self')
         console.log('SIGNED IN')
     } else {
         //window.location.href = "/index.html";
@@ -29,13 +30,14 @@ $('#signIn').on('click', password)
 $('#signUp').on('click', signUp)
 
 function password() {
-    var email = $('#email').val()
-    var password = $('#password').val()
+    var email = $('#emailIn').val()
+    var password = $('#passwordIn').val()
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
         // ...
+        console.log(errorMessage)
     });
 }
 
