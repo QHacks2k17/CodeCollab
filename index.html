@@ -3,12 +3,17 @@
 <head>
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
-    <script type="text/javascript" src="userlist.js"></script>
-    <link type="text/css" href="userlist.css" rel="stylesheet">
+    <!--
+  <script type="text/javascript" src="userlist.js"></script>
+<link type="text/css" href="userlist.css" rel="stylesheet">
+-->
 
     <!-- CodeMirror -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.css" />
+
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/ace.js"></script>-->
 
     <!-- Firepad -->
     <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.css" />
@@ -65,13 +70,12 @@
                 </div>
             </div>
         </div>
-        <div id="firepad"></div>
         <script>
             function init() {
                 // Initialize Firebase.
                 // TODO: replace with your Firebase project configuration.
                 var config = {
-                    apiKey: " AIzaSyCDiVAqsIAnM1RnffFEgbbtMSVrSvZDaPI",
+                    apiKey: "AIzaSyCDiVAqsIAnM1RnffFEgbbtMSVrSvZDaPI",
                     databaseURL: "https://codecollab-a0036.firebaseio.com"
                 };
                 firebase.initializeApp(config);
@@ -82,21 +86,16 @@
                 // Create CodeMirror (with lineWrapping on).
                 var codeMirror = CodeMirror(document.getElementById('firepad'), {
                     lineNumbers: true,
-                    mode: 'htmlmixed'
-                });
+                    mode: 'javascript'
 
-                var userId = Math.floor(Math.random() * 9999999999).toString();
+                });
 
                 // Create Firepad (with rich text toolbar and shortcuts enabled).
                 var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
                     richTextShortcuts: true,
                     richTextToolbar: true,
-                    defaultText: '// JavaScript Editing with Firepad!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}',
-                    userId: userId
+                    defaultText: '// JavaScript Editing with Code Collab!\nfunction go() {\n  var message = "Hello, QHacks.";\n  console.log(message);\n}'
                 });
-                var firepadUserList = FirepadUserList.fromDiv(firepadRef.child('users'),
-                    document.getElementById('userlist'), userId);
-
             }
 
             function getExampleRef() {
