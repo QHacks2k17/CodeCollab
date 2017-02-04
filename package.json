@@ -1,0 +1,19 @@
+{
+  "name": "codecollab",
+  "version": "1.0.0",
+  "description": "Interactive coding tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QHacks2k17/CodeCollab.git"
+  },
+  "author": "Tolu,Tolu, Ash, Bijan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/QHacks2k17/CodeCollab/issues"
+  },
+  "homepage": "https://github.com/QHacks2k17/CodeCollab#readme"
+}
