@@ -29,13 +29,13 @@ html {
 }
 
 .firepad {
-    width: 700px;
-    height: 450px;
+    width: 100%;
+    height: 100%;
     /* dark orange background */
 }
 
 .CodeMirror {
-/*    background-color: #f62;*/
+    /*    background-color: #f62;*/
 }
 
 #wrapper {
