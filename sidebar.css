@@ -9,7 +9,6 @@ body {
     margin: 0;
     height: 100%;
     position: relative;
-    background-color: crimson;
 }
 
 html {
@@ -19,16 +18,6 @@ html {
 
 /* Height / width / positioning can be customized for your use case.
          For demo purposes, we make firepad fill the entire browser. */
-
-.container {
-    color: antiquewhite;
-    text-align: center;
-    margin-top: 100px;
-}
-
-#button {
-    text-align: center;
-}
 
 #firepad-container {
     width: 100%;

@@ -37,9 +37,9 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li class="active"><a href="#">Contact</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#login">Log In</a></li>
@@ -48,36 +48,41 @@
             </div>
         </div>
     </nav>
-<!--/.nav-collapse -->    
+<!--/.nav-collapse -->
 
-    <div class="container">
-        <br>
-        <br>
-        <br>
-        <center>
-        <h1>CodeCollab</h1>
-        <p class="lead">Use this space to code with others at the same time
-            <br> with the ability to message and video chat.</p>
-        </center>
-    </div>
-    <!-- /.container -->
+<div class="container">
 
-    <br>
-    <br>
-    <center>
-    <a href="codit.html" class="button">Start coding now</a>
-    </center>
-    <br>
-    <br>
+    <div class="row"><h3 class="text-center">Contact</h3></div>
+    <div class="row"><hr></div>
+
+    <form action="https://formspree.io/contact@codecollabwith.me"
+      method="POST">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input class="text-left form-control" id="name" type="text" placeholder="Name" name="name">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input class="text-left form-control" id="email" type="email" placeholder="Email" name="_replyto">
+        </div>
+
+         <div class="form-group">
+            <label for="comment">Comment</label>
+            <textarea class="text-left form-control" id="comment" placeholder="Enter text" name="Text"></textarea>
+        </div>
+
+        <div>
+        	<button class="button" id="submit" type="submit">Submit</button>
+        </div>
+    </form>
 
 
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<img src = "placeHolder2.jpg" width=100% height="100%"/></img>
+
+
+
 
 </body>
 
