@@ -39,13 +39,8 @@
                        Code Collab
                     </a>
                 </li>
-                <!--
                 <li>
-    <a href="#">Save Collab</a>
-</li>
--->
-                <li>
-                    <a href="#" id="logout">Log out</a>
+                    <a href="#">Save Collab</a>
                 </li>
                 <!--
                <li>
@@ -130,26 +125,6 @@
                     document.getElementById('firepad').value = "";
                 }
             }
-        </script>
-        <script>
-            //            var config = {
-            //                apiKey: "AIzaSyCDiVAqsIAnM1RnffFEgbbtMSVrSvZDaPI",
-            //                authDomain: "codecollab-a0036.firebaseapp.com",
-            //                databaseURL: "https://codecollab-a0036.firebaseio.com",
-            //                storageBucket: "codecollab-a0036.appspot.com",
-            //                messagingSenderId: "959804611798"
-            //            };
-            //            firebase.initializeApp(config);
-
-            firebase.auth().onAuthStateChanged(function (user) {
-                if (user) {
-                    // User is signed in.
-                    console.log('SIGNED IN')
-                } else {
-                    window.location.href = "/index.html";
-                    console.log('SIGNED OUT')
-                }
-            });
         </script>
 </body>
 
